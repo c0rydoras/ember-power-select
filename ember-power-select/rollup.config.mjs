@@ -1,41 +1,45 @@
-import { babel } from '@rollup/plugin-babel';
-import { Addon } from '@embroider/addon-dev/rollup';
-import sass from 'rollup-plugin-sass';
-import postcss from 'postcss';
-import path from 'path';
+import { babel } from "@rollup/plugin-babel";
+import { Addon } from "@embroider/addon-dev/rollup";
+import { fileURLToPath } from "node:url";
+import { resolve, dirname } from "node:path";
+import sass from "rollup-plugin-sass";
+import postcss from "postcss";
+
+const rootDirectory = dirname(fileURLToPath(import.meta.url));
+const tsConfig = resolve(rootDirectory, "./tsconfig.json");
 
 const addon = new Addon({
-  srcDir: 'src',
-  destDir: 'dist',
+  srcDir: "src",
+  destDir: "dist",
 });
 
 export default [
   // Compile scss file for js import
   {
-    input: './_index.scss',
+    input: "./_index.scss",
     output: {
-      file: './src/vendor/ember-power-select.js',
-      assetFileNames: '[name][extname]',
+      file: "./src/vendor/ember-power-select.js",
+      assetFileNames: "[name][extname]",
     },
     plugins: [
       sass({
         options: {
-          includePaths: [path.resolve('node_modules')],
+          includePaths: [resolve("node_modules")],
         },
-        output: './src/vendor/ember-power-select.css',
+        output: "./src/vendor/ember-power-select.css",
       }),
     ],
   },
   {
-    input: './_index.scss',
+    input: "./_index.scss",
     output: {
-      file: './src/vendor/ember-power-select.js',
-      assetFileNames: '[name][extname]',
+      file: "./src/vendor/ember-power-select.js",
+      assetFileNames: "[name][extname]",
     },
     plugins: [
       sass({
         options: {
-          includePaths: [path.resolve('node_modules')],
+          includePaths: [resolve("node_modules")],
         },
         processor: (css) =>
           postcss()
@@ -60,21 +64,21 @@ export default [
       // is aligned to the config here.
       // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
       addon.publicEntrypoints([
-        'index.js',
-        'styles.js',
-        'test-support.js',
-        'components/**/*.js',
-        'helpers/**/*.js',
-        'test-support/**/*.js',
-        'themes/**/*.js',
-        'utils/**/*.js',
-        'vendor/**/*.js',
+        "index.js",
+        "styles.js",
+        "test-support.js",
+        "components/**/*.js",
+        "helpers/**/*.js",
+        "test-support/**/*.js",
+        "themes/**/*.js",
+        "utils/**/*.js",
+        "vendor/**/*.js",
       ]),
 
       // These are the modules that should get reexported into the traditional
       // "app" tree. Things in here should also be in publicEntrypoints above, but
       // not everything in publicEntrypoints necessarily needs to go here.
-      addon.appReexports(['components/**/*.js', 'helpers/**/*.js']),
+      addon.appReexports(["components/**/*.js", "helpers/**/*.js"]),
 
       // Follow the V2 Addon rules about dependencies. Your code can import from
       // `dependencies` and `peerDependencies` as well as standard Ember-provided
@@ -88,8 +92,8 @@ export default [
       // By default, this will load the actual babel config from the file
       // babel.config.json.
       babel({
-        extensions: ['.js', '.gjs', '.ts', '.gts'],
-        babelHelpers: 'bundled',
+        extensions: [".js", ".gjs", ".ts", ".gts"],
+        babelHelpers: "bundled",
       }),
 
       // Ensure that standalone .hbs files are properly integrated as Javascript.
@@ -99,41 +103,44 @@ export default [
       addon.gjs(),
 
       // Emit .d.ts declaration files
-      addon.declarations('declarations'),
+      addon.declarations(
+        "declarations",
+        `pnpm ember-tsc --declaration --project ${tsConfig}`,
+      ),
 
       // addons are allowed to contain imports of .css files, which we want rollup
       // to leave alone and keep in the published output.
-      addon.keepAssets(['**/*.css']),
+      addon.keepAssets(["**/*.css"]),
 
       // Remove leftover build artifacts when starting a new build.
       addon.clean(),
     ],
   },
   {
-    input: './scss/bootstrap-complete.scss',
+    input: "./scss/bootstrap-complete.scss",
     output: {
-      file: './dist/vendor/ember-power-select-bootstrap.js',
-      assetFileNames: '[name][extname]',
+      file: "./dist/vendor/ember-power-select-bootstrap.js",
+      assetFileNames: "[name][extname]",
     },
     plugins: [
       sass({
         options: {
-          includePaths: [path.resolve('node_modules')],
+          includePaths: [resolve("node_modules")],
         },
-        output: './dist/vendor/ember-power-select-bootstrap.css',
+        output: "./dist/vendor/ember-power-select-bootstrap.css",
       }),
     ],
   },
   {
-    input: './scss/bootstrap-complete.scss',
+    input: "./scss/bootstrap-complete.scss",
     output: {
-      file: './dist/vendor/ember-power-select-bootstrap.js',
-      assetFileNames: '[name][extname]',
+      file: "./dist/vendor/ember-power-select-bootstrap.js",
+      assetFileNames: "[name][extname]",
     },
     plugins: [
       sass({
         options: {
-          includePaths: [path.resolve('node_modules')],
+          includePaths: [resolve("node_modules")],
         },
         processor: (css) =>
           postcss()
@@ -145,30 +152,30 @@ export default [
     ],
   },
   {
-    input: './scss/material-complete.scss',
+    input: "./scss/material-complete.scss",
     output: {
-      file: './dist/vendor/ember-power-select-material.js',
-      assetFileNames: '[name][extname]',
+      file: "./dist/vendor/ember-power-select-material.js",
+      assetFileNames: "[name][extname]",
     },
     plugins: [
       sass({
         options: {
-          includePaths: [path.resolve('node_modules')],
+          includePaths: [resolve("node_modules")],
         },
-        output: './dist/vendor/ember-power-select-material.css',
+        output: "./dist/vendor/ember-power-select-material.css",
       }),
     ],
   },
   {
-    input: './scss/material-complete.scss',
+    input: "./scss/material-complete.scss",
     output: {
-      file: './dist/vendor/ember-power-select-material.js',
-      assetFileNames: '[name][extname]',
+      file: "./dist/vendor/ember-power-select-material.js",
+      assetFileNames: "[name][extname]",
     },
     plugins: [
       sass({
         options: {
-          includePaths: [path.resolve('node_modules')],
+          includePaths: [resolve("node_modules")],
         },
         processor: (css) =>
           postcss()
