@@ -1,1 +1,1 @@
-import './vendor/ember-power-select.css';
+export { default } from './vendor/ember-power-select.js';
