@@ -103,8 +103,8 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1
       ember-basic-dropdown:
-        specifier: git+https://github.com/cibernox/ember-basic-dropdown#4cd4d48350315337188361c25e29c440eaca698b
-        version: https://codeload.github.com/cibernox/ember-basic-dropdown/tar.gz/4cd4d48350315337188361c25e29c440eaca698b(@babel/core@7.28.5)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.5)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3)
+        specifier: git+https://github.com/c0rydoras/ember-basic-dropdown#133c01b914343efbf122a5a373ae73d2a8eca7cc
+        version: https://codeload.github.com/c0rydoras/ember-basic-dropdown/tar.gz/133c01b914343efbf122a5a373ae73d2a8eca7cc(@babel/core@7.28.5)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.5)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3)
       ember-concurrency:
         specifier: ^5.1.0
         version: 5.1.0(@babel/core@7.28.5)(@glint/template@1.7.3)
@@ -3440,6 +3440,13 @@ packages:
   ember-auto-import@2.12.0:
     resolution: {integrity: sha512-J9wVTddnpx1ZPf6CgtMs8byp5t9ZZITUX9v+H+PgSDSgbYbDrVlKr2RGDfJLrnaTpuWwZqh1b54/9jLaERr6QA==}
     engines: {node: 12.* || 14.* || >= 16}
+
+  ember-basic-dropdown@https://codeload.github.com/c0rydoras/ember-basic-dropdown/tar.gz/133c01b914343efbf122a5a373ae73d2a8eca7cc:
+    resolution: {tarball: https://codeload.github.com/c0rydoras/ember-basic-dropdown/tar.gz/133c01b914343efbf122a5a373ae73d2a8eca7cc}
+    version: 8.11.0
+    peerDependencies:
+      '@ember/test-helpers': ^5.0.0
+      '@glimmer/component': ^2.0.0
 
   ember-basic-dropdown@https://codeload.github.com/cibernox/ember-basic-dropdown/tar.gz/4cd4d48350315337188361c25e29c440eaca698b:
     resolution: {tarball: https://codeload.github.com/cibernox/ember-basic-dropdown/tar.gz/4cd4d48350315337188361c25e29c440eaca698b}
@@ -11303,6 +11310,23 @@ snapshots:
       - '@glint/template'
       - supports-color
       - webpack
+
+  ember-basic-dropdown@https://codeload.github.com/c0rydoras/ember-basic-dropdown/tar.gz/133c01b914343efbf122a5a373ae73d2a8eca7cc(@babel/core@7.28.5)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.5)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3):
+    dependencies:
+      '@ember/test-helpers': 5.4.1(@babel/core@7.28.5)(@glint/template@1.7.3)
+      '@embroider/addon-shim': 1.10.2
+      '@embroider/macros': 1.19.6(@glint/template@1.7.3)
+      '@glimmer/component': 2.0.0
+      decorator-transforms: 2.3.1(@babel/core@7.28.5)
+      ember-element-helper: 0.8.8
+      ember-modifier: 4.2.2(@babel/core@7.28.5)
+      ember-style-modifier: 4.5.1(@babel/core@7.28.5)(@ember/string@4.0.1)
+      ember-truth-helpers: 5.0.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@ember/string'
+      - '@glint/template'
+      - supports-color
 
   ember-basic-dropdown@https://codeload.github.com/cibernox/ember-basic-dropdown/tar.gz/4cd4d48350315337188361c25e29c440eaca698b(@babel/core@7.28.5)(@ember/string@4.0.1)(@ember/test-helpers@5.4.1(@babel/core@7.28.5)(@glint/template@1.7.3))(@glimmer/component@2.0.0)(@glint/template@1.7.3):
     dependencies:

@@ -11,3 +11,6 @@ resolvePeersFromWorkspaceRoot: false
 packages:
   - .
   - docs
+
+onlyBuiltDependencies:
+  - "ember-basic-dropdown"
